@@ -25,6 +25,18 @@
                 alert(`${currentMatch} is a Tie`);
                 return;
             }
+
+            // Rock
+            if (pInput === "Rock") {
+                if (cInput === "Scissors") {
+                    alert(`${currentMatch} = You Win`);
+                } else {
+                    alert(`${currentMatch} = Computer Wins`);
+                }
+            }
+
+
+
         }
 
     </script>
