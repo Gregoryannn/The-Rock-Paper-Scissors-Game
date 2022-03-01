@@ -23,6 +23,11 @@
                 const cOptions = ["Rock", "Paper", "Scissors"];
                 const cInput = cOptions[Math.floor(Math.random() * 3)];
                 compareInputs(pInput, cInput);
+                updateScore();
+                if (checkWinner()) {
+                    pScore = cScore = 0;
+                    updateScore();
+                }
             });
         });
 
@@ -35,35 +40,60 @@
                 return;
             }
 
-            // Rock
+            // Check for Rock
             if (pInput === "Rock") {
                 if (cInput === "Scissors") {
                     alert(`${currentMatch} = You Win`);
+                    pScore++;
                 } else {
                     alert(`${currentMatch} = Computer Wins`);
+                    cScore++;
                 }
             }
 
-            // Paper
+            // Check for Paper
             else if (pInput === "Paper") {
                 if (cInput === "Rock") {
                     alert(`${currentMatch} = You Win`);
+                    pScore++;
                 } else {
                     alert(`${currentMatch} = Computer Wins`);
+                    cScore++;
                 }
             }
-            // Scissors
+            // Check for Scissors
             else {
                 if (cInput === "Paper") {
                     alert(`${currentMatch} = You Win`);
+                    pScore++;
                 } else {
                     alert(`${currentMatch} = Computer Wins`);
+                    cScore++;
 
                 }
 
             }
 
         }
+
+        function updateScore() {
+            document.getElementById("p-score").textContent = pScore;
+            document.getElementById("c-score").textContent = cScore;
+        }
+
+        function checkWinner() {
+            if (pScore === 5 || cScore === 5) {
+                const winner =
+                    pScore === 5
+                        ? "You win the game! Congratulations!"
+                        : "Computer wins the game! Try again next time!";
+                alert(winner);
+                return true;
+            }
+            return false;
+        }
+
+
 
     </script>
 
